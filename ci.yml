@@ -75,6 +75,7 @@ jobs:
                 params:
                     submodules: [build/terraform]
               - get: ci
+            # TODO(@ndmckinley): This task is too monolithic and should be split up.
           - task: generate
             file: ci/magic-modules/generate.yml
             params:
@@ -115,6 +116,7 @@ jobs:
             params:
                 submodules: [build/terraform]
             passed: [terraform-test, mm-generate]
+            # TODO(@ndmckinley): This get/task/put/task/put flow is confusing and should be cleaned up.
           - get: mm-initial-pr
             resource: magic-modules-new-prs
             passed: [mm-generate]
@@ -160,3 +162,6 @@ jobs:
                 merge:
                     method: squash
                     commit_msg: mm-output/commit_message
+
+# TODO(@ndmckinley): System for confirming no downstream conflicts.
+# TODO(@ndmckinley): System for building the Docker containers this depends on.

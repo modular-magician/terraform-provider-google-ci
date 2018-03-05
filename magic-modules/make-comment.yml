@@ -1,4 +1,6 @@
 ---
+# This file takes four inputs: the PR-ready MM repo, the inciting PR, the terraform PR, and the CI repo.
+# It spits out the magic-modules repo with a comment file for the inciting PR.
 platform: linux
 
 image_resource:

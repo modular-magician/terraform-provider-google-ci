@@ -1,4 +1,7 @@
 ---
+# This takes in the magic-modules repo in detached-HEAD state, and
+# prepares it to be used by the concourse PR resource to create
+# a new pull request.
 platform: linux
 
 image_resource:

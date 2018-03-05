@@ -1,4 +1,7 @@
 ---
+# This file takes two inputs: magic-modules in detached-HEAD state, and the CI repo.
+# It spits out "mm-output", a magic-modules repo on a new branch (named after the
+# HEAD commit on the PR), with submodules updated to be on a branch with the same name.
 platform: linux
 
 image_resource:

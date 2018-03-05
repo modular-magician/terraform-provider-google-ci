@@ -1,4 +1,6 @@
 ---
+# This takes in the approved PR and CI repo, and updates the PR so that
+# its submodules track the `master` branch on their assorted repos.
 platform: linux
 
 image_resource:

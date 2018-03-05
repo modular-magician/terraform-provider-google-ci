@@ -1,25 +1,24 @@
 #!/bin/bash
 
+# This creates a PR comment based on what PR was created downstream.
+
 set -e
 set -x
 
 shopt -s dotglob
-cd mm-initial-pr
+
+pushd mm-initial-pr
 ID=$(git config --get pullrequest.id)
-BRANCH=$(git config --get pullrequest.branch)
-echo $BRANCH
-echo $ID
-cat .git/branch
-cd ..
+popd
+
+pushd terraform-prs-out
+TF_PR=$(git config --get pullrequest.id)
+popd
+
 cp -r magic-modules-out/* magic-modules-comment
 
-cd magic-modules-comment
-git config pullrequest.id $ID
-
-cd ../terraform-prs-out
-TF_PR=$(git config --get pullrequest.id)
-
-cd ../magic-modules-comment
+pushd magic-modules-comment
+git config pullrequest.id "$ID"
 cat << EOF > ./pr_comment 
 I am a robot that works on MagicModules PRs!
 
